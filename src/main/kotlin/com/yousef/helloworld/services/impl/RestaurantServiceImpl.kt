@@ -1,34 +1,43 @@
-package com.yousef.helloworld.services
+package com.yousef.helloworld.services.impl
 
 import com.yousef.helloworld.domain.entities.Restaurant
 import com.yousef.helloworld.respositories.RestaurantRepository
+import com.yousef.helloworld.services.RestaurantService
+import jakarta.transaction.Transactional
+import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
 
 @Service
 class RestaurantServiceImpl(
-    private val restaurantRepository: RestaurantRepository
+    private val restaurantRepository: RestaurantRepository,
 ): RestaurantService {
+
     override fun create(restaurant: Restaurant): Restaurant {
-        TODO("Not yet implemented")
+        check(restaurant.id == null)
+        check(restaurantRepository.findByName(restaurant.name) == null) {"Restaurant name already exists"}
+        return restaurantRepository.save(restaurant)
     }
 
     override fun all(): List<Restaurant> {
-        TODO("Not yet implemented")
+        return restaurantRepository.findAll()
     }
 
     override fun findById(id: Long): Restaurant? {
-        TODO("Not yet implemented")
+        return restaurantRepository.findByIdOrNull(id)
     }
 
     override fun findByName(name: String): Restaurant? {
-        TODO("Not yet implemented")
+        return restaurantRepository.findByName(name)
     }
 
-    override fun deleteById(id: Long): Boolean {
-        TODO("Not yet implemented")
+    override fun deleteById(id: Long): Unit {
+        restaurantRepository.deleteById(id)
     }
 
-    override fun update(restaurant: Restaurant) {
-        TODO("Not yet implemented")
+    @Transactional
+    override fun update(id: Long, restaurant: Restaurant): Restaurant {
+        check(restaurantRepository.existsById(id))
+        val normalizedRestaurant = restaurant.copy(id=id)
+        return restaurantRepository.save(normalizedRestaurant)
     }
 }

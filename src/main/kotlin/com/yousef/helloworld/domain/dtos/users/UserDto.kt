@@ -1,4 +1,4 @@
-package com.yousef.helloworld.domain.dtos
+package com.yousef.helloworld.domain.dtos.users
 
 data class UserDto(
     val id: Long,

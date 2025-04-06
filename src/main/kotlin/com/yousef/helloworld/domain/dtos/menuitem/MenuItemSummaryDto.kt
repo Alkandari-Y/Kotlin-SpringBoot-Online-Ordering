@@ -1,3 +1,9 @@
-package com.yousef.helloworld.domain.dtos
+package com.yousef.helloworld.domain.dtos.menuitem
 
-data class MenuItemDto()
+
+data class MenuItemSummaryDto(
+    val id: Long,
+    val name: String,
+    val price: Double,
+    val image: String
+)

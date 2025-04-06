@@ -1,4 +1,4 @@
-package com.yousef.helloworld.contorllers
+package com.yousef.helloworld.controllers
 
 import com.yousef.helloworld.domain.dtos.HelloWorldDto
 import com.yousef.helloworld.domain.dtos.AddFoodRequestDto
