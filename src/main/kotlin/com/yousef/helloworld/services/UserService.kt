@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service
 
 @Service
 interface UserService {
-    fun getUsers(): Iterable<User>
+    fun all(): Iterable<User>
     fun createUser(user: User): User
     fun findById(id: Long): User?
     fun findByUsername(name: String): User?
