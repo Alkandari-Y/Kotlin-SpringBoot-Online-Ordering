@@ -1,7 +1,7 @@
 package com.yousef.helloworld.contorllers
 
-import com.yousef.helloworld.entities.Dtos.HelloWorldDto
-import com.yousef.helloworld.entities.Dtos.AddFoodRequestDto
+import com.yousef.helloworld.domain.dtos.HelloWorldDto
+import com.yousef.helloworld.domain.dtos.AddFoodRequestDto
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController
 
 
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/api/v1/hey")
 class HelloWorldAPIController {
 
     @GetMapping(path=["/hello-world"])
